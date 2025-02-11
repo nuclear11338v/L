@@ -10,7 +10,6 @@ pipelines:
           - gcc -o arman arman.c -lz -static -lpthread
           - chmod 777 arman
           - pip install pyinstaller >/dev/null 2>&1
-          - pyinstaller --onefile --name arman
           - pyinstaller --onefile --name arman.py
           - pip install pytelegrambotapi certifi
           - pip install python-telegram-bot
